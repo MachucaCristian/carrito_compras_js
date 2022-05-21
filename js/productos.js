@@ -9,6 +9,10 @@ const productos = [
     {id:8, nombre:"MONITOR 55' CX TOTEM LFD INDOOR CAPACITIVE TOUCH", descripcion:" PANTALLA:  Tamaño: 55;   Display Resolution: 1920*1080; Ratio: 16:9; Brillo: 450 cd/m2; Contraste: 5000:1; Colores: 16.7M; Tiempo de respuesta: 6.5ms; Vida util del backlight: +50,000 horas;  Angulo de visión: 178°/ 178°",  imagen:"../images/MONITOR55_CX.jpg", precio:442039}
 ];
 
+//operador avanzados
+const [a, b, c, d ,e , f , g , h] = productos;
+console.log(a, b, d , g , h); 
+
 function guardarProductosLS(productos) {
     localStorage.setItem("productos", JSON.stringify(productos));
 }
