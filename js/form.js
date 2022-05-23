@@ -1,3 +1,13 @@
+function mostrarErrorCampo (campo){
+    Swal.fire({
+        icon: 'error',
+        title: 'Error!!',
+        text: 'Complete el campo' +  campo,
+        confirmButtontext: 'Aceptar'
+      })
+
+}
+
 function validarFormulario() {
     let nombre = document.getElementById("nombre").value;
     let email = document.getElementById("email").value;
@@ -5,44 +15,36 @@ function validarFormulario() {
     let direccion = document.getElementById("direccion").value;
     let localidad = document.getElementById("localidad").value;
     let provincia = document.getElementById("provincia").value;
-    let resultado_form = document.getElementById("resultado_form");
+    
 
-   /* if (nombre.length == 0) {
-        resultado_form.innerHTML = "<div class='p-3 mb-2 bg-danger text-white'>Ingrese un valor para el campo Nombre!</div>";
+    if (nombre.length == 0) {
+        mostrarErrorCampo (" Nombre")
         return false;
-    } else {
-        resultado_form.innerHTML = "";
-    }*/
-    //operadores avanzados 
-    let resultado_nombre = nombre.length == 0 ? "Ingrese un valor para el campo Nombre!" : "";
-    resultado_form.innerHTML = resultado_nombre;
-    if (nombre.length == 0) { return false };
-
+    } 
+    
     if (email.length == 0) {
-        resultado_form.innerHTML = "<div class='p-3 mb-2 bg-danger text-white'>Ingrese un valor para el campo Email!</div>";
+        mostrarErrorCampo (" Email")
         return false;
     } else if (email.indexOf("@") == -1) {
-        resultado_form.innerHTML = "<div class='p-3 mb-2 bg-danger text-white'>Ingrese correctamente el Email para el campo Email!</div>";
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!!',
+            text: 'Coloque un Email valido',
+            confirmButtontext: 'Aceptar'
+          })
+         return false;
+    } 
+ 
+     if ((telefono.length == 0)) {
+        mostrarErrorCampo (" Telefono")
         return false;
-    } else {
-        resultado_form.innerHTML = "";
     }
 
-    if ((telefono.length )) {
-       resultado_form.innerHTML = "";
-    }
-
-    /*if (direccion.length == 0) {
-        resultado_form.innerHTML = "<div class='p-3 mb-2 bg-danger text-white'>Ingrese un valor para el campo Dirección!</div>";
-        return false;
-    } else {
-        resultado_form.innerHTML = "";
-    }*/
-    //operadores avanzados 
-    let resultado_direccion = direccion.length == 0 ? "Ingrese un valor para el campo Direccion!" : "";
-    resultado_form.innerHTML = resultado_direccion;
-    if (direccion.length == 0) { return false };
-    
+   if (direccion.length == 0) {
+    mostrarErrorCampo (" Direccion")
+       return false;
+    } 
+ 
     //Creo un objeto con los datos del usuario
     let datos_formulario = {usuario_nombre:nombre, usuario_email:email, usuario_telefono:telefono, usuario_direccion:direccion, usuario_localidad:localidad, usuario_provincia:provincia};
     //Creo una localStorage con los datos del formulario en un array
